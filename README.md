@@ -6,8 +6,7 @@
 |:-------------------:|:--------------:|:------:|:---:|:----:|:---:|
 | **Status:**         |  -             | + <br> (default) |  -  |   –  |  –  |
 
-[Zplugin](https://github.com/zdharma/zplugin) can use the NPM package registry
-to automatically:
+[Zinit](https://github.com/zdharma/zinit) can use the `package.json` file to automatically:
 
 - get the plugin's Git repository OR release-package URL,
 - get the list of the recommended ices for the plugin,
@@ -20,11 +19,11 @@ Example invocations that'll install [Mozilla Firefox](https://www.mozilla.org/en
 ```zsh
 # Download the binary of Firefox.
 # Supports Windows (Cygwin), Linux and OS X.
-zplugin pack for firefox
+zinit pack for firefox
 
 # Download the Firefox binary and set it up
 # with use of the Bin-Gem-Node annex.
-zplugin pack"bgn" for firefox
+zinit pack"bgn" for firefox
 ```
 
 ## Default Profile
@@ -32,10 +31,10 @@ zplugin pack"bgn" for firefox
 Provides the CLI commands `firefox-bin` and `firefox` by extending the `$PATH`
 to point to the snippet's directory.
 
-The Zplugin command executed will be equivalent to:
+The Zinit command executed will be equivalent to:
 
 ```zsh
-zplugin id-as"firefox" as"command" lucid" \
+zinit id-as"firefox" as"command" lucid" \
     atclone'local ext="${${${(M)OSTYPE#linux*}:+tar.bz2}:-dmg}"; \
         zpextract %ID% $ext --norm ${${OSTYPE:#darwin*}:+--move}'
     pick"firefox(|-bin)" atpull"%atclone" nocompile is-snippet for \
@@ -46,13 +45,13 @@ zplugin id-as"firefox" as"command" lucid" \
 
 Provides the CLI command `firefox` by creating a forwarder script (a *shim*) to
 the `firefox-bin` command, in `$ZPFX/bin` by using the
-[Bin-Gem-Node](https://github.com/zplugin/z-a-bin-gem-node) annex. It's the best
+[Bin-Gem-Node](https://github.com/zinit/z-a-bin-gem-node) annex. It's the best
 method of providing the binary to the command line.
 
-The Zplugin command executed will be equivalent to:
+The Zinit command executed will be equivalent to:
 
 ```zsh
-zplugin id-as"firefox" as"null" lucid \
+zinit id-as"firefox" as"null" lucid \
     atclone'local ext="${${${(M)OSTYPE#linux*}:+tar.bz2}:-dmg}"; \
         zpextract %ID% $ext --norm ${${OSTYPE:#darwin*}:+--move}'
     atpull"%atclone" nocompile is-snippet for \
