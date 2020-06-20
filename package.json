@@ -1,22 +1,22 @@
 {
-    "_from": "firefox-dev@^72.0.0",
-    "_id": "zsh-firefox-dev@72.0.0",
+    "_from": "firefox@^72.0.0",
+    "_id": "zsh-firefox@72.0.0",
     "_inBundle": false,
-    "_location": "/zsh-firefox-dev",
+    "_location": "/zsh-firefox",
     "_phantomChildren": {},
     "_requested": {
         "type": "range",
         "registry": true,
-        "raw": "firefox-dev@^72.0.0",
-        "name": "firefox-dev",
-        "escapedName": "firefox-dev",
+        "raw": "firefox@^72.0.0",
+        "name": "firefox",
+        "escapedName": "firefox",
         "rawSpec": "^72.0.0",
         "saveSpec": null,
         "fetchSpec": "^72.0.0"
     },
     "_requiredBy": [],
-    "_spec": "firefox-dev@^72.0.0",
-    "_where": "/root/github2/pkg-firefox-dev",
+    "_spec": "firefox@^72.0.0",
+    "_where": "/root/github2/pkg-firefox",
     "author": "Mozilla Foundation",
     "bugs": {
         "url": "https://bugzilla.mozilla.org/"
@@ -27,7 +27,7 @@
     "deprecated": false,
     "description": "Automatic privacy is here. Download Firefox to block over 2000 trackers.",
     "devDependencies": {},
-    "homepage": "https://github.com/aws/firefox-dev",
+    "homepage": "https://github.com/aws/firefox",
     "keywords": [
         "web browser",
         "browser",
@@ -35,10 +35,10 @@
         "zsh"
     ],
     "license": "Mozilla Public License",
-    "name": "zsh-firefox-dev",
+    "name": "zsh-firefox",
     "zsh-data": {
         "plugin-info": {
-            "url": "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=${${${(M)OSTYPE##linux}:+linux64}:-${${(M)OSTYPE##darwin}:+osx}}&lang=en-US",
+            "url": "https://download.mozilla.org/?product=firefox-latest-ssl&os=${${${(M)OSTYPE##linux}:+linux64}:-${${(M)OSTYPE##darwin}:+osx}}&lang=en-US",
             "version": "72.0b3",
             "message": "A snippet providing Firefox Developer Edition."
         },
@@ -49,7 +49,8 @@
                 "as": "command",
                 "pick": "**/firefox(|-bin)(|.exe)",
                 "nocompile": "",
-                "atclone": "local -A map; map=( '(#i)linux*' tar.bz2 '(#i)(cygwin|win|wsl)*' exe '(#i)darwin*' dmg ); local ext=\"${map[(k)$OSTYPE]}\"; zpextract %ID% $ext --norm ${${OSTYPE:#(#i)(darwin|cygwin|win|wsl)*}:+--move};",
+		"mv": "%ID% ff.pkg",
+                "atclone": "local -A map; map=( '(#i)linux*' tar.bz2 '(#i)(cygwin|win|wsl)*' exe '(#i)darwin*' dmg ); local ext=\"${map[(k)$OSTYPE]}\"; zpextract ff.pkg $ext --norm ${${OSTYPE:#(#i)(darwin|cygwin|win|wsl)*}:+--move};",
                 "atpull": "%atclone"
             },
             "bgn": {
@@ -58,7 +59,8 @@
                 "lucid": "",
                 "as": "null",
                 "nocompile": "",
-                "atclone": "local -A map; map=( '(#i)linux*' tar.bz2 '(#i)(cygwin|win|wsl)*' exe '(#i)darwin*' dmg ); local ext=\"${map[(k)$OSTYPE]}\"; zpextract %ID% $ext --norm ${${OSTYPE:#(#i)(darwin|cygwin|win|wsl)*}:+--move};",
+		"mv": "%ID% ff.pkg",
+                "atclone": "local -A map; map=( '(#i)linux*' tar.bz2 '(#i)(cygwin|win|wsl)*' exe '(#i)darwin*' dmg ); local ext=\"${map[(k)$OSTYPE]}\"; zpextract ff.pkg $ext --norm ${${OSTYPE:#(#i)(darwin|cygwin|win|wsl)*}:+--move};",
                 "atpull": "%atclone",
                 "sbin": "**/firefox(.exe|-bin) -> firefox"
             }

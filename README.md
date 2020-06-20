@@ -1,6 +1,6 @@
 # aws/amazon-firefox-dev as a Zsh package
 
-##### Homepage link: [Mozilla Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/)
+##### Homepage link: [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/)
 
 | **Package source:** | Source Tarball | Binary | Git | Node | Gem |
 |:-------------------:|:--------------:|:------:|:---:|:----:|:---:|
@@ -15,14 +15,16 @@ to automatically:
     - the ice lists are stored in *profiles*; there's at least one profile, *default*,
     - the ices can be selectively overriden.
 
-Example invocations that'll install [Mozilla Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/)
+Example invocations that'll install [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/)
 
 ```zsh
-# Download the binary of amazon-firefox-dev command
-zplugin pack for firefox-dev
+# Download the binary of Firefox.
+# Supports Windows (Cygwin), Linux and OS X.
+zplugin pack for firefox
 
-# Download the firefox-dev binary with use of the bin-gem-node annex
-zplugin pack"bgn" for firefox-dev
+# Download the Firefox binary and set it up
+# with use of the Bin-Gem-Node annex.
+zplugin pack"bgn" for firefox
 ```
 
 ## Default Profile
@@ -33,28 +35,27 @@ to point to the snippet's directory.
 The Zplugin command executed will be equivalent to:
 
 ```zsh
-zplugin id-as"firefox-dev" as"command" lucid" \
+zplugin id-as"firefox" as"command" lucid" \
     atclone'local ext="${${${(M)OSTYPE#linux*}:+tar.bz2}:-dmg}"; \
         zpextract %ID% $ext --norm ${${OSTYPE:#darwin*}:+--move}'
     pick"firefox(|-bin)" atpull"%atclone" nocompile is-snippet for \
-        "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=${${${(M)OSTYPE##linux}:+linux64}:-${${(M)OSTYPE##darwin}:+osx}}&lang=en-US"
+        "https://download.mozilla.org/?product=firefox-latest-ssl&os=${${${(M)OSTYPE##linux}:+linux64}:-${${(M)OSTYPE##darwin}:+osx}}&lang=en-US"
 ```
 
-## bin-gem-node Profile
+## Bin-Gem-Node Profile
 
 Provides the CLI command `firefox` by creating a forwarder script (a *shim*) to
 the `firefox-bin` command, in `$ZPFX/bin` by using the
-[bin-gem-node](https://github.com/zplugin/z-a-bin-gem-node) annex. It's the best
+[Bin-Gem-Node](https://github.com/zplugin/z-a-bin-gem-node) annex. It's the best
 method of providing the binary to the command line.
 
 The Zplugin command executed will be equivalent to:
 
 ```zsh
-zplugin id-as"firefox-dev" as"null" lucid \
+zplugin id-as"firefox" as"null" lucid \
     atclone'local ext="${${${(M)OSTYPE#linux*}:+tar.bz2}:-dmg}"; \
         zpextract %ID% $ext --norm ${${OSTYPE:#darwin*}:+--move}'
     atpull"%atclone" nocompile is-snippet for \
-        "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=${${${(M)OSTYPE##linux}:+linux64}:-${${(M)OSTYPE##darwin}:+osx}}&lang=en-US"
+        "https://download.mozilla.org/?product=firefox-latest-ssl&os=${${${(M)OSTYPE##linux}:+linux64}:-${${(M)OSTYPE##darwin}:+osx}}&lang=en-US"
 ```
 
-<!-- vim:set ft=markdown tw=80 fo+=an1 autoindent: -->
