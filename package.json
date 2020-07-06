@@ -38,7 +38,7 @@
     "name": "zsh-firefox",
     "zsh-data": {
         "plugin-info": {
-            "url": "https://download.mozilla.org/?product=firefox-latest-ssl&os=${${${(M)OSTYPE##linux}:+linux64}:-${${(M)OSTYPE##darwin}:+osx}}&lang=en-US",
+            "url": "https://download.mozilla.org/?product=firefox-latest-ssl&os=${${${(M)OSTYPE##linux}:+linux${${(M)MACHTYPE:#*64*}:+64}}:-${${(M)OSTYPE##darwin}:+osx}}&lang=en-US",
             "message": "A snippet providing Firefox Developer Edition."
         },
         "zplugin-ices": {
