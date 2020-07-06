@@ -1,4 +1,4 @@
-# aws/amazon-firefox-dev as a Zsh package
+# Firefox Browser as a Zsh package
 
 ##### Homepage link: [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/)
 
@@ -19,11 +19,11 @@ Example invocations that'll install [Mozilla Firefox](https://www.mozilla.org/en
 ```zsh
 # Download the binary of Firefox.
 # Supports Windows (Cygwin), Linux and OS X.
-zinit pack for firefox
+zinit pack for firefox-browser
 
 # Download the Firefox binary and set it up
 # with use of the Bin-Gem-Node annex.
-zinit pack"bgn" for firefox
+zinit pack"bgn" for firefox-browser
 ```
 
 ## Default Profile
@@ -34,7 +34,7 @@ to point to the snippet's directory.
 The Zinit command executed will be equivalent to:
 
 ```zsh
-zinit id-as"firefox" as"command" lucid" \
+zinit id-as"firefox-browser" as"command" lucid" \
     atclone'local ext="${${${(M)OSTYPE#linux*}:+tar.bz2}:-dmg}"; \
         zpextract %ID% $ext --norm ${${OSTYPE:#darwin*}:+--move}'
     pick"firefox(|-bin)" atpull"%atclone" nocompile is-snippet for \
@@ -51,7 +51,7 @@ method of providing the binary to the command line.
 The Zinit command executed will be equivalent to:
 
 ```zsh
-zinit id-as"firefox" as"null" lucid \
+zinit id-as"firefox-browser" as"null" lucid \
     atclone'local ext="${${${(M)OSTYPE#linux*}:+tar.bz2}:-dmg}"; \
         zpextract %ID% $ext --norm ${${OSTYPE:#darwin*}:+--move}'
     atpull"%atclone" nocompile is-snippet for \
